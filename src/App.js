@@ -1,9 +1,32 @@
 import React from "react";
+import styled from "@emotion/styled";
+import PokemonRow from "./PokemonRow.js";
+import PokemonInfo from "./PokemonInfo.js";
 
-import PokemonRow from "./PokemonRow.js"
-import PokemonInfo from "./PokemonInfo.js"
+
 import "./App.css";
 
+const Title = styled.h1`
+  text-align: center;
+`;
+
+const TwoColumnLayout = styled.div`
+display: grid;
+grid-template-columns: 70% 30%;
+grid-column-gap: 1rem,
+`;
+
+const Container = styled.div`
+margin: auto;
+width: 800px;
+padding-top: 1rem;
+`
+
+const Input = styled.div`
+  width: 100%;
+  font-size: x-large;
+  padding: 0.2rem;
+`
 
 
 function App() {
@@ -18,21 +41,9 @@ function App() {
   }, []);
 
   return (
-    <div
-      style={{
-        margin: "auto",
-        width: 800,
-        paddingTop: "1rem",
-      }}
-    >
-      <h1 className="title">Pokemon Search</h1>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "70%, 30%",
-          gridColumnGap: "1rem",
-        }}
-      >
+    <Container>
+      <Title>Pokemon Search</Title>
+      <TwoColumnLayout>
         <div>
           <input
             value={filter}
@@ -62,8 +73,8 @@ function App() {
           </table>
         </div>
         {selectedItem && <PokemonInfo {...selectedItem} />}
-      </div>
-    </div>
+      </TwoColumnLayout>
+    </Container>
   );
 }
 
